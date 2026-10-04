@@ -32,14 +32,8 @@ func main() {
 }
 
 func receive(code string) {
-	listener, err := net.Listen("tcp", ":9000")
-	if err != nil {
-		fmt.Println("Erreur :", err)
-		os.Exit(1)
-	}
-	defer listener.Close()
 
-	conn, err := listener.Accept()
+	conn, err := net.Dial("tcp", "localhost:9000")
 	if err != nil {
 		fmt.Println("Erreur :", err)
 		os.Exit(1)
